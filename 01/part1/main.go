@@ -13,15 +13,15 @@ func main() {
 	CheckError(err)
 	defer f.Close()
 
-	total := 0
+	total_fuel := 0
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		mass, err := strconv.Atoi(scanner.Text())
 		CheckError(err)
-		total += CalcMass(mass)
+		total_fuel += CalcFuel(mass)
 	}
 
-	fmt.Printf("Total mass: %v\n", total)
+	fmt.Printf("Total Fuel: %v\n", total_fuel)
 }
 
 func CheckError(err error) {
@@ -30,8 +30,8 @@ func CheckError(err error) {
 	}
 }
 
-func CalcMass(total int) (mass int) {
-	mass = total / 3
-	mass = mass - 2
+func CalcFuel(mass int) (fuel int) {
+	fuel = mass / 3
+	fuel = fuel - 2
 	return
 }
